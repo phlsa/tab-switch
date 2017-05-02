@@ -34,6 +34,12 @@
 		.state-2 {
 			background-image: url(2.png);
 		}
+
+		.loader {
+			width: 0px;
+			height: 0px;
+			background-image: url(1.png), url(2.png), url(1-hover.png), url(2-hover.png);
+		}
 	</style>
 </head>
 <body>
@@ -44,6 +50,8 @@ Delay: <input type="text" id="delay-field" value="100"><br><br>
 	<div id="tab1"></div>
 	<div id="tab2"></div>
 </div>
+
+<div class="loader"></div>
 
 <script>
 	var win = document.getElementById('window')
