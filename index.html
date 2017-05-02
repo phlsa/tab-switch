@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tab Switching</title>
+	<style type="text/css">
+		#window {
+			position: relative;
+			width: calc(2255px / 2);
+			height: calc(1394px / 2);
+			background-size: 100%;
+		}
+		#window > div {
+			position: absolute;
+			top: 18px;
+			left: 10px;
+			width: 247px;
+			height: 37px;
+			background: red;
+			opacity: 0;
+		}
+		#tab2 {
+			left: 255px !important;
+		}
+
+		.state-2.hover-1 {
+			background-image: url(2-hover.png) !important;
+		}
+		.state-1.hover-2 {
+			background-image: url(1-hover.png) !important;
+		}
+		.state-1 {
+			background-image: url(1.png);
+		}
+		.state-2 {
+			background-image: url(2.png);
+		}
+	</style>
+</head>
+<body>
+
+Delay: <input type="text" id="delay-field" value="100"><br><br>
+
+<div id="window" class="state-1">
+	<div id="tab1"></div>
+	<div id="tab2"></div>
+</div>
+
+<script>
+	var win = document.getElementById('window')
+	var t1 = document.getElementById('tab1')
+	var t2 = document.getElementById('tab2')
+
+	var delay = 100;
+	function getDelay() {
+		return document.getElementById('delay-field').value
+	}
+
+	t1.addEventListener('mouseover', () => {
+		win.classList.add('hover-1')
+	})
+	t1.addEventListener('mouseout', () => {
+		win.classList.remove('hover-1')
+	})
+	t2.addEventListener('mouseover', () => {
+		win.classList.add('hover-2')
+	})
+	t2.addEventListener('mouseout', () => {
+		win.classList.remove('hover-2')
+	})
+	t1.addEventListener('mousedown', () => {
+		setTimeout(() => {
+			win.classList.remove('state-2')
+			win.classList.add('state-1')
+		}, getDelay())
+	})
+	t2.addEventListener('mousedown', () => {
+		setTimeout(() => {
+			win.classList.remove('state-1')
+			win.classList.add('state-2')
+		}, getDelay())
+	})
+</script>
+</body>
+</html>
